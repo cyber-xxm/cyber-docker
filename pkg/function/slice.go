@@ -2,6 +2,16 @@ package function
 
 import "cmp"
 
+func IsEmptyArray[T interface{}](v []T) bool {
+	if v == nil {
+		return true
+	}
+	if len(v) == 0 {
+		return true
+	}
+	return false
+}
+
 func IsEmptySlice[T interface{}](v []T) bool {
 	if v == nil || len(v) == 0 {
 		return true

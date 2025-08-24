@@ -18,10 +18,22 @@ import (
 func BuildInjector(dic *di.Container) (*Injector, error) {
 	client := GetDockerClient(dic)
 	images := api.Images{
-		Client: client,
+		SDK: client,
+	}
+	containers := api.Containers{
+		SDK: client,
+	}
+	network := api.Network{
+		SDK: client,
+	}
+	volume := api.Volume{
+		SDK: client,
 	}
 	dockerDocker := &docker.Docker{
-		ImageApi: images,
+		ImageApi:     images,
+		ContainerApi: containers,
+		NetworkApi:   network,
+		VolumeApi:    volume,
 	}
 	modsMods := &mods.Mods{
 		Docker: dockerDocker,

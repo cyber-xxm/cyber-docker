@@ -10,7 +10,7 @@ import (
 
 func main() {
 	fmt.Println("Hello, World!")
-	client, err := docker.NewDockerClientFromHost("tcp://ip:port")
+	client, err := docker.NewDockerClientFromHost("tcp://192.168.31.100:54321")
 	if err != nil {
 		panic(err)
 	}

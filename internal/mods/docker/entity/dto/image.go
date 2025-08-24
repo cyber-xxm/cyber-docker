@@ -1,12 +1,23 @@
 package dto
 
-type ImportDTO struct {
-	Tar      string   `json:"tar" binding:"required"`
-	Tag      string   `json:"tag" binding:"required"`
-	Registry string   `json:"registry"`
-	Cmd      string   `json:"cmd" binding:"required"`
-	WorkDir  string   `json:"workDir"`
-	Expose   []string `json:"expose"`
-	Env      []string `json:"env"`
-	Volume   []string `json:"volume"`
+type ImageDto struct {
+	Sha string `json:"sha" form:"sha"`
+}
+
+type ImageGetDto struct {
+	Layer bool `json:"layer" form:"layer"`
+}
+
+type ImageDeleteDto struct {
+	ImageDto
+	Force bool `json:"force" form:"force"`
+}
+
+type ImagePruneDto struct {
+	Unused bool `json:"unused" form:"unused"`
+	Build  bool `json:"build" form:"build"`
+}
+
+type ImageImportDto struct {
+	Container bool `json:"container,omitempty" form:"container" binding:"required"`
 }
